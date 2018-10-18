@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">Ordered Product Detail</h1>
+  </div>
+</div>
+<div class='col-md-3'>
+<h2>Buyer Name: </h2><h4><%= @order_item.name %></h4>
+<h2>Buyer Number: </h2><h4><%= @order_item.number %></h4>
+<h2>Shipping Address: </h2><h4><%= @order_item.address %></h4>
+</div>
+
+<div class='col-md-9'>
+
+<% @order_item.cartitems.each do |item| %>
+<div class='cart-header' id='<%= item.id %>'>
+	 <div class='close1' id='close<%= item.id %>' %> </div>
+	 <div class="cart-sec simpleCart_shelfItem">
+			<div class="cart-item cyc">
+				 <%= image_tag(item.Product.images.first, :class=>'img-responsive') %>
+			</div>
+		   <div class="cart-item-info">
+			<h3><a href="#"> <%= item.Product.name %> </a></h3>
+			<ul class="qty">
+				<li><p>Price : <%= item.Product.price %></p></li>
+			</ul>
+				 	
+		   </div>
+								
+	  </div>
+</div>
+<% end %>
+
+</div>

@@ -1,0 +1,48 @@
+<div class="new-arrivals-w3agile">
+					<div class="container">
+						<h2 class="tittle">New Arrivals</h2>
+						<div class="arrivals-grids">
+							<% items.each do |product| %>
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="#" class="new-gri" data-toggle="modal" data-target="#myModal1">
+												<div class="grid-img">
+														  
+														
+													<%= image_tag(product.images.last, :class=>'img-responsive') %>
+													
+												</div>
+												<div class="grid-img">
+													<%= image_tag(product.images.first, :class=>'img-responsive') %>
+												</div>			
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben">
+										<p>NEW</p>
+									</div>
+									<div class="ribben1">
+										<p>SALE</p>
+									</div>
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
+									</div>
+									<div class="women">
+										<h6><a href="single.html"><%= product.name %></a></h6>
+										<span class="size">XL / XXL / S </span>
+										<p ><del></del><em class="item_price">RS <%= product.price %></em></p>
+										<% if user_signed_in? %>
+										<%= link_to 'Add TO Card', carts_path(:id=>product.id), :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
+										<% else %>
+										<%= link_to 'Add TO Card', new_user_session_path, :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
+										<% end %>
+									</div>
+								</div>
+							</div>
+							<% end %>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>

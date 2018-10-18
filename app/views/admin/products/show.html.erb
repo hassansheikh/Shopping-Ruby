@@ -1,0 +1,12 @@
+<h1> <%= @product.name %></h1><br>
+<h2>price: <%= @product.price %> </h2>
+<h2>Product Code: <%= @product.product_code %> </h2>
+<h4>Description: <%= @product.description %> </h4>
+<h4>Staus: <%= @product.status %> </h4>
+
+<% (0...@product.images.count).each do |image| %>
+<%= image_tag(@product.thumbnail(image)) %>
+<% end %>
+
+<%= link_to 'Edit', edit_admin_product_path(@product) %> |
+<%= link_to 'Back', admin_products_path %>

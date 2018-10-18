@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopping</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+   
+    <!-- Bootstrap Core CSS -->
+        <link href="<%= request.base_url %>/admin/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="<%= request.base_url %>/admin/css/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Timeline CSS -->
+        <link href="<%= request.base_url %>/admin/css/timeline.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="<%= request.base_url %>/admin/css/startmin.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="<%= request.base_url %>/admin/css/morris.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="<%= request.base_url %>/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- jQuery -->
+<script src="<%= request.base_url %>/admin/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="<%= request.base_url %>/admin/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="<%= request.base_url %>/admin/js/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="<%= request.base_url %>/admin/js/startmin.js"></script>
+
+
+  </head>
+
+  <body>
+    <div id="wrapper">
+
+    <% if user_signed_in? &&  current_user.role=="admin" %>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <%= render 'partials/admin_sidebar' %>
+      </nav>
+
+      <div id="page-wrapper">
+        <div class="container-fluid">
+
+                <%= yield %>
+            <!-- ... Your content goes here ... -->
+
+        </div>
+    </div>
+
+      <% else %>
+        <%= yield %>
+ <% end %>
+ <div id="wrapper">
+      
+
+  </body>
+</html>

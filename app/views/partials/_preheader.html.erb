@@ -1,0 +1,22 @@
+<div class="header-top">
+				<div class="container">
+					 <div class="top-left">
+						<a href="#"> Help  <i class="glyphicon glyphicon-phone" aria-hidden="true"></i> +0123-456-789</a>
+					</div>
+					<div class="top-right">
+					<ul>
+						<li><a href="/carts">Checkout</a></li>
+						<% if user_signed_in? %>
+							<li><li><%= link_to "Logout" , destroy_user_session_path, method: :delete %></li>
+							<li><%= link_to "Create Account" , new_user_registration_path %>							
+							<li><p> <%= current_user.email %> </p></li>
+
+						<% else %>
+							<li><li><%= link_to "Login" , new_user_session_path %></li>
+							<li><%= link_to "Create Account" , new_user_registration_path %>
+						<% end %>
+					</ul>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>

@@ -1,0 +1,40 @@
+<div class="content">
+        <!--login-->
+      <div class="login">
+    <div class="main-agileits">
+        <div class="form-w3agile form1">
+          <h3>Personal Details</h3>
+
+
+          <%= form_with model: @cart, local: true do |f| %>
+            
+            <div class="key">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name" ,placeholder: "Name"%>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="key">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <%= f.text_field :number, autocomplete: "number" ,placeholder: "Number"%>
+              <div class="clearfix"></div>
+            </div>
+            <div class="key">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+              <%= f.text_field :address, autocomplete: "address" ,placeholder: "Address"%>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Checkout" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="forg">
+            
+          <div class="clearfix"></div>
+          </div>
+      </div>
+    </div>
+        <!--login-->
+    </div>

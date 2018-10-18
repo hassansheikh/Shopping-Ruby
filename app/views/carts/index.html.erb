@@ -1,0 +1,14 @@
+<div class="content">
+			<div class="cart-items">
+				<div class="container">
+					 <h2>My Shopping Bag </h2>
+					 <% if (@cartitems) %>
+					 <%= render 'cart_items.html.erb' %>
+					 <% end %>
+						
+				</div>
+			</div>
+
+			<div align="right"style= "padding-right:50px; padding-bottom:35px"><h1><%= link_to 'Next' , edit_cart_path(6) %></h1></div>
+	<!-- checkout -->	
+		</div>

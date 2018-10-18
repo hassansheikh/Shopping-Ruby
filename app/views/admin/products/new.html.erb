@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">Add New Product</h1>
+  </div>
+</div>
+
+<div class="col-md-5">
+
+<%= form_with scope: :product, url: admin_products_path, html: { multipart: true }, local: true do |form| %>
+ 
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %> prohibited
+        this Product from being saved:
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name  ,class: "form-control",placeholder:"Product Name"  %>
+  </p>
+  <p>
+    <%= form.label :price %><br>
+    <%= form.text_field :price  ,class: "form-control",placeholder:"Product Price"  %>
+  </p>
+ 
+
+ <p>
+    <%= form.label :category %><br>
+    <%= form.select :category_id, Category.all.map { |p| [p.title , p.id]}, {},{class: 'form-control', id: 'category_id'}  %>
+  </p>
+
+<p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description  ,class: "form-control",placeholder:"Description"  %>
+  </p>
+
+  <p>
+    <%= form.label :images %><br>
+    <%= form.file_field :images , multiple: true %>
+  </p>
+
+  <p>
+    <input name="commit" value="Save Product" data-disable-with="Save Product" type="submit" onclick="buttonclick()">
+  </p>
+
+  <%= form.hidden_field :cat_id  ,class: "form-control product_code_id" %>
+  <%= form.hidden_field :cat_name  ,class: "form-control product_code_name" %>
+ 
+<% end %>
+
+ 
+<%= link_to 'Back', admin_products_path %>
+</div>
+
+<script type="text/javascript">
+  function buttonclick()
+  {
+    
+    var e = document.getElementById("category_id");
+    var cat_id = e.options[e.selectedIndex].value;
+    cat_id=cat_id.substring(0, 2).toUpperCase();
+    $('.product_code_id').val(cat_id);
+    var cat_name = e.options[e.selectedIndex].text;
+    cat_name=cat_name.substring(0, 2).toUpperCase();
+    $('.product_code_name').val(cat_name);
+  }
+  
+</script>

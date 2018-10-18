@@ -1,0 +1,145 @@
+<!--content-->
+		<div class="content">
+			<!--single-->
+			<div class="single-wl3">
+				<div class="container">
+					<div class="single-grids">
+						<div class="col-md-9 single-grid">
+							<div clas="single-top">
+								<div class="single-left">
+									<div class="flexslider">
+										<ul class="slides">
+											<li data-thumb="<%= @product.images.last %>">
+												<div class="thumb-image"> <%= image_tag(@product.images.last,:data=>{:imagezoom => "true"} ,:class=>'img-responsive') %> </div>
+											</li>
+											<li data-thumb="<%= @product.images.first %>">
+												 <div class="thumb-image"> <%= image_tag(@product.images.first,:data=>{:imagezoom => "true"} , :class=>'img-responsive') %> </div>
+											</li>
+											<li data-thumb="<%= @product.images.last %>">
+											   <div class="thumb-image"> <%= image_tag(@product.images.last,:data=>{:imagezoom => "true"} , :class=>'img-responsive') %> </div>
+											</li> 
+										 </ul>
+									</div>
+								</div>
+								<div class="single-right simpleCart_shelfItem">
+									<h4><%= @product.name %></h4>
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
+									</div>
+									<p class="price item_price">RS <%= @product.price %></p>
+									<div class="description">
+										<p><span>Quick Overview : </span> <%= @product.description %></p>
+									</div>
+									<div class="color-quality">
+										<h6>Quality :</h6>
+											<div class="quantity"> 
+												<div class="quantity-select">                           
+													<div class="entry value-minus1">&nbsp;</div>
+													<div class="entry value1"><span>1</span></div>
+													<div class="entry value-plus1 active">&nbsp;</div>
+												</div>
+											</div>
+												<!--quantity-->
+														<script>
+														$('.value-plus1').on('click', function(){
+															var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)+1;
+															divUpd.text(newVal);
+														});
+
+														$('.value-minus1').on('click', function(){
+															var divUpd = $(this).parent().find('.value1'), newVal = parseInt(divUpd.text(), 10)-1;
+															if(newVal>=1) divUpd.text(newVal);
+														});
+														</script>
+													<!--quantity-->
+									</div>
+									<div class="women">
+										<span class="size">XL / XXL / S </span>
+										<% if user_signed_in? %>
+										<%= link_to 'Add TO Card', carts_path(:id=>@product.id), :method => :post, :cart=>@product.id, :class=>"my-cart-b item_add"  %>
+										<% else %>
+										<%= link_to 'Add TO Card', new_user_session_path, :method => :post, :cart=>@product.id, :class=>"my-cart-b item_add"  %>
+										<% end %>
+									</div>
+									<div class="social-icon">
+										<a href="#"><i class="icon"></i></a>
+										<a href="#"><i class="icon1"></i></a>
+										<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+									</div>
+								</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="col-md-3 single-grid1">
+							<h3>Recent Products</h3>
+
+							<% @recent.each do |product| %>
+							<div class="recent-grids">
+								<div class="recent-left">
+									<a href="single.html"><%= image_tag(product.images.first ,:class=>'img-responsive') %></a>	
+								</div>
+								<div class="recent-right">
+									<h6 class="best2"><a href="single.html"><%= product.name %> </a></h6>
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
+									</div>
+									<span class=" price-in1"> RS <%= product.price %></span>
+								</div>	
+								<div class="clearfix"> </div>
+							</div>
+							
+							<% end %>
+							
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					
+				</div>
+			</div>
+			<!--single-->
+			<div class="new-arrivals-w3agile">
+					<div class="container">
+						<h3 class="tittle1">Best Sellers</h3>
+						<div class="arrivals-grids">
+							<% @recent.each do |product| %>
+							<div class="col-md-3 arrival-grid simpleCart_shelfItem">
+								<div class="grid-arr">
+									<div  class="grid-arrival">
+										<figure>		
+											<a href="single.html">
+												<div class="grid-img">
+													<%= image_tag(product.images.last, :class=>'img-responsive') %>
+												</div>
+												<div class="grid-img">
+													<%= image_tag(product.images.first, :class=>'img-responsive') %>
+												</div>			
+											</a>		
+										</figure>	
+									</div>
+									<div class="ribben">
+										<p>NEW</p>
+									</div>
+									<div class="block">
+										<div class="starbox small ghosting"> </div>
+									</div>
+									<div class="women">
+										<h6><a href="single.html"><%= product.name %></a></h6>
+										<span class="size">XL / XXL / S </span>
+										<p ><del>$100.00</del><em class="item_price">RS <%= product.price %></em></p>
+										<% if user_signed_in? %>
+										<%= link_to 'Add TO Card', carts_path(:id=>product.id), :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
+										<% else %>
+										<%= link_to 'Add TO Card', new_user_session_path, :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
+										<% end %>
+									</div>
+								</div>
+							</div>
+							<% end %>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			<!--new-arrivals-->
+		</div>
+		<!--content-->
