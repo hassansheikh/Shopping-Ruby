@@ -16,10 +16,10 @@
 	 <div class='close1' id='close<%= item.id %>' %> </div>
 	 <div class="cart-sec simpleCart_shelfItem">
 			<div class="cart-item cyc">
-				 <%= image_tag(item.Product.images.first, :class=>'img-responsive') %>
+				 <%= image_tag(item.product.images.first, :class=>'img-responsive') %>
 			</div>
 		   <div class="cart-item-info">
-			<h3><a href="#"> <%= item.Product.name %> </a><span>Pickup time:</span></h3>
+			<h3><a href="#"> <%= item.product.name %> </a><span>Pickup time:</span></h3>
 			<ul class="qty">
 				<li><p>Min. order value:</p></li>
 				<li><p>FREE delivery</p></li>
