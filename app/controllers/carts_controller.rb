@@ -24,8 +24,8 @@ skip_before_action :verify_authenticity_token
 		if count==1
 			@cart.each do |ca|
 				@cartitem=Cartitem.new
-				@cartitem.Product_id=params[:id]
-				@cartitem.Cart_id=ca.id
+				@cartitem.product_id=params[:id]
+				@cartitem.cart_id=ca.id
 				@cartitem.quantity=params[:quantity]
 				@cartitem.save
 			end
