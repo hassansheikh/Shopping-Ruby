@@ -13,9 +13,13 @@ class Admin::ProductsController < ApplicationController
 	def create
 		cat_id=params.require(:product).permit(:cat_id)
 		last_product=Product.where(:category_id => cat_id[:cat_id]).order("created_at").last
-		last_product_code= last_product.product_code
-		last_product_code.slice!(0,3)
-		num= last_product_code.to_i+1
+		if (last_product)
+			last_product_code= last_product.product_code
+			last_product_code.slice!(0,3)
+			num= last_product_code.to_i+1
+		else
+			num=1
+		end
 		cat_name=params.require(:product).permit(:cat_name)
 		product_code=cat_name[:cat_name]+"-00"+num.to_s
 
