@@ -107,12 +107,23 @@
 						<div class="header-right2">
 							<div class="cart box_1">
 								<a href="/carts">
+									<% if(@app_cartitems) %>
+									<% ammount=0 %>
+									<% @app_cartitems.each do |item| %>
+
+									<% ammount= ammount+item.Product.price.to_i %>
+									<% end %>
 									<h3> <div class="total">
-										<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+										<span>RS <%= ammount %></span> (<span id="simpleCart_quantity" ><%= @app_cartitems.count %></span> items)</div>
 										<img src="images/bag.png" alt="" />
 									</h3>
+									<% else %>
+										<h3> <div class="total">
+										<span>RS 0</span> (<span id="simpleCart_quantity" >0</span> items)</div>
+										<img src="images/bag.png" alt="" />
+									</h3>
+									<% end %>
 								</a>
-								<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 								<div class="clearfix"> </div>
 							</div>	
 						</div>

@@ -26,6 +26,7 @@ skip_before_action :verify_authenticity_token
 				@cartitem=Cartitem.new
 				@cartitem.Product_id=params[:id]
 				@cartitem.Cart_id=ca.id
+				@cartitem.quantity=params[:quantity]
 				@cartitem.save
 			end
 
@@ -35,9 +36,12 @@ skip_before_action :verify_authenticity_token
 			@newcart.save
 			@cartitem=Cartitem.new
 			@cartitem.Product_id=params[:id]
+			@cartitem.quantity=params[:quantity]
 			@cartitem.Cart_id=@newcart.id
 			@cartitem.save
 		end
+
+		print params
 
 		#@user=current_user
 		#@cart=Cart.new
@@ -59,7 +63,7 @@ skip_before_action :verify_authenticity_token
 	end
 
 	def destroy
-		@cart=Cart.find(params[:id])
+		@cart=Cartitem.find(params[:id])
 		@cart.destroy
 	end
 end
