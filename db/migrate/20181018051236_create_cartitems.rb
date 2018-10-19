@@ -1,7 +1,7 @@
 class CreateCartitems < ActiveRecord::Migration[5.2]
   def change
     create_table :cartitems do |t|
-      t.references :Product, foreign_key: true
+      t.references :product, foreign_key: true
 
       t.timestamps
     end
