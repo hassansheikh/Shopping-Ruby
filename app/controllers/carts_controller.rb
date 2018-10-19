@@ -2,10 +2,15 @@ class CartsController < ApplicationController
 
 skip_before_action :verify_authenticity_token
 	def index
-		@user=User.find(current_user.id)
-		@cart=@user.carts.where(status: 'cart').last
-		if(@cart)
-			@cartitems=@cart.cartitems
+		
+		if (current_user)
+			@user=User.find(current_user.id)
+			@cart=@user.carts.where(status: 'cart').last
+			if(@cart)
+				@cartitems=@cart.cartitems
+			end
+		else
+			redirect_to new_user_session_path
 		end
 	end
 
