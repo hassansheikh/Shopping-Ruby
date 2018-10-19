@@ -18,7 +18,7 @@ local:
 google:
    service: GCS
    project: "dr_hope"
-   credentials: "<%= Rails.root.join("Dr-Hope-55b5c607030b.json") %>"
+   credentials: "<%= Rails.root.join("Hope-55b5c607030b.json") %>"
    bucket: "shopping_ruby"
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
