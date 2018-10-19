@@ -111,7 +111,7 @@
 									<% ammount=0 %>
 									<% @app_cartitems.each do |item| %>
 
-									<% ammount= ammount+item.Product.price.to_i %>
+									<% ammount= ammount+item.product.price.to_i %>
 									<% end %>
 									<h3> <div class="total">
 										<span>RS <%= ammount %></span> (<span id="simpleCart_quantity" ><%= @app_cartitems.count %></span> items)</div>
