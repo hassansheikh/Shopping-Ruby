@@ -35,9 +35,9 @@ skip_before_action :verify_authenticity_token
 			@newcart.user_id=@user.id
 			@newcart.save
 			@cartitem=Cartitem.new
-			@cartitem.Product_id=params[:id]
+			@cartitem.product_id=params[:id]
 			@cartitem.quantity=params[:quantity]
-			@cartitem.Cart_id=@newcart.id
+			@cartitem.cart_id=@newcart.id
 			@cartitem.save
 		end
 

@@ -22,7 +22,7 @@
 		<span class="size">XL / XXL / S </span>
 		<p ><del>$100.00</del><em class="item_price"><%= product.price %></em></p>
 		<% if user_signed_in? %>
-		<%= link_to 'Add TO Card', carts_path(:id=>product.id), :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
+		<%= link_to 'Add TO Card', carts_path(:id=>product.id,:quantity=> 1), :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
 		<% else %>
 		<%= link_to 'Add TO Card', new_user_session_path, :method => :post, :cart=>product.id, :class=>"my-cart-b item_add"  %>
 		<% end %>
